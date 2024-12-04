@@ -1,5 +1,20 @@
 version: 0.2
 
+env:
+  parameter-store:
+    REACT_APP_APPWRITE_ENDPOINT: /ArtConnect/Appwrite/Endpoint
+    REACT_APP_APPWRITE_PROJECT: /ArtConnect/Appwrite/ProjectID
+    REACT_APP_APPWRITE_DATABASE_ID: /ArtConnect/Appwrite/DatabaseID
+    REACT_APP_APPWRITE_CATEGORIES_COLLECTION_ID: /ArtConnect/Appwrite/Collections/CategoriesID
+    REACT_APP_APPWRITE_ARTISTS_COLLECTION_ID: /ArtConnect/Appwrite/Collections/ArtistsID
+    REACT_APP_APPWRITE_ARTWORKS_COLLECTION_ID: /ArtConnect/Appwrite/Collections/ArtworksID
+    REACT_APP_APPWRITE_CART_ITEMS_COLLECTION_ID: /ArtConnect/Appwrite/Collections/CartItemsID
+    REACT_APP_CLOUDINARY_CLOUD_NAME: /ArtConnect/Cloudinary/CloudName
+    REACT_APP_HERO_IMAGE_ID: /ArtConnect/Cloudinary/HeroImageID
+    REACT_APP_CONTACT_FORM_RECAPTCHA_SITE_KEY: /ArtConnect/ReCaptcha/SiteKey
+    REACT_APP_GOOGLE_OAUTH_REDIRECT_URL: /ArtConnect/OAuth/Google/RedirectUrl
+    REACT_APP_GOOGLE_OAUTH_REDIRECT_FAILURE_URL: /ArtConnect/OAuth/Google/RedirectFailureUrl
+
 phases:
   pre_build:
     commands:
