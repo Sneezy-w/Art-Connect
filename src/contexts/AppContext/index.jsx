@@ -260,25 +260,50 @@ export const AppProvider = ({ children }) => {
         artistsState.loading,
         [checkUserState.loading, categoriesState.loading, artworksState.loading, artistsState.loading]);
 
+    // const sendEmail = async (formData) => {
+    //     const functions = new Functions(client);
+    //     try {
+    //         const response = await functions.createExecution(
+    //             process.env.REACT_APP_APPWRITE_EMAIL_FUNCTION_ID,
+    //             JSON.stringify(formData)
+    //         );
+    //         if (response.status === 'completed' && JSON.parse(response.responseBody).success === true) {
+    //             //console.log('Email sent successfully');
+    //             //console.log('Email response:', response);
+    //             return JSON.parse(response.responseBody);
+    //         } else {
+    //             throw new Error('Failed to send email');
+    //         }
+    //     } catch (error) {
+    //         console.error('Error sending email:', error);
+    //         throw error;
+    //     }
+    // };
+
     const sendEmail = async (formData) => {
-        const functions = new Functions(client);
         try {
-            const response = await functions.createExecution(
-                process.env.REACT_APP_APPWRITE_EMAIL_FUNCTION_ID,
-                JSON.stringify(formData)
-            );
-            if (response.status === 'completed' && JSON.parse(response.responseBody).success === true) {
-                //console.log('Email sent successfully');
-                //console.log('Email response:', response);
-                return JSON.parse(response.responseBody);
+          const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/contact`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+          });
+          
+          if (!response.ok) {
+            if (response.status === 429) {
+                throw new Error('Rate limit exceeded');
             } else {
                 throw new Error('Failed to send email');
             }
+          }
+          
+          return await response.json();
         } catch (error) {
-            console.error('Error sending email:', error);
-            throw error;
+          console.error('Error sending email:', error);
+          throw error;
         }
-    };
+      };
 
     const value = {
         user,

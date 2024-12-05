@@ -36,7 +36,11 @@ function Contact() {
             setFormData({ name: '', email: '', subject: '', message: '' });
             recaptchaRef.current.reset();
         } catch (error) {
-            setSubmitMessage('Failed to send message. Please try again.');
+            if (error.message === 'Rate limit exceeded') {
+                setSubmitMessage('Rate limit exceeded. Please try again later.');
+            } else {
+                setSubmitMessage('Failed to send message. Please try again.');
+            }
             console.error('Error sending email:', error);
         } finally {
             setIsLoading(false);
