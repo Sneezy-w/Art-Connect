@@ -17,10 +17,13 @@ env:
     REACT_APP_BACKEND_URL: /ArtConnect/Backend/URL
 
 phases:
-  pre_build:
+  install:
     commands:
       - echo Installing dependencies...
       - npm install
+
+  pre_build:
+    commands:
       - echo Running tests...
       - npm test -- --watchAll=false --passWithNoTests
 
