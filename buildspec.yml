@@ -21,9 +21,6 @@ phases:
     commands:
       - echo Installing dependencies...
       - npm install
-
-  test:
-    commands:
       - echo Running tests...
       - npm test -- --watchAll=false --passWithNoTests
 
