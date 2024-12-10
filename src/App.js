@@ -1,20 +1,19 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navigation from './components/Navigation';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import Shop from './pages/Shop';
-import Contact from './pages/Contact';
-import Gallery from './pages/Gallery';
-import Artists from './pages/Artists';
-import Artwork from './pages/Artwork';
-import ArtistDetail from './pages/Artists/artistDetails';
-import './App.css';
-import { AppProvider, useAppContext } from './contexts/AppContext';
-import LoadingIndicator from './components/LoadingIndicator';
-import ScrollToTop from './components/ScrollToTop';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Shop from "./pages/Shop";
+import Contact from "./pages/Contact";
+import Gallery from "./pages/Gallery";
+import Artists from "./pages/Artists";
+import Artwork from "./pages/Artwork";
+import ArtistDetail from "./pages/Artists/artistDetails";
+import "./App.css";
+import { AppProvider, useAppContext } from "./contexts/AppContext";
+import LoadingIndicator from "./components/LoadingIndicator";
+import ScrollToTop from "./components/ScrollToTop";
 
 const MainContent = () => {
-
   const { globalLoading } = useAppContext();
 
   if (globalLoading) {
@@ -40,10 +39,9 @@ const MainContent = () => {
         <Footer />
       </div>
     </Router>
-  )
-}
+  );
+};
 function App() {
-
   return (
     // <div className="App">
     //   <header className="App-header">

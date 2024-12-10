@@ -22,6 +22,11 @@ phases:
       - echo Installing dependencies...
       - npm install
 
+  test:
+    commands:
+      - echo Running tests...
+      - npm test -- --watchAll=false --passWithNoTests
+
   build:
     commands:
       - echo Building React application...
